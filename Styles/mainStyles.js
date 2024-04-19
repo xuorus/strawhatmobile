@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
   HeaderContainer:{
     display:'flex',
     flexDirection:'row',
-    height:100,
+    height: 105,
     backgroundColor: '#1A1851',
     alignItems:'center',
     justifyContent:'space-evenly',
@@ -23,10 +23,12 @@ const Styles = StyleSheet.create({
 
   title:{
     textAlign: 'center',
-    fontSize: 40, 
+    fontSize: 20, 
     fontStyle: 'normal',
     fontWeight: '500',
-    color: '#FFF', 
+    color: '#FFF',
+    justifyContent: 'center',
+    marginTop: 23,
   },
 
   CourseText:{
@@ -52,6 +54,7 @@ const Styles = StyleSheet.create({
 
   buttonLable:{
     marginHorizontal: 10,
+    color: 'white'
   },
 
   buttonsContainer:{
@@ -61,6 +64,7 @@ const Styles = StyleSheet.create({
 
   tableContainer:{
     marginHorizontal: 25,
+    marginVertical: 30,
     borderStyle: 'solid',
     borderWidth: 2, 
     borderColor: '#1A1851',
@@ -95,9 +99,9 @@ const Styles = StyleSheet.create({
 
   thirdrow:{
     flexDirection:'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems:'center',
-    marginBottom:1,
+    marginBottom: 5,
   },
 
   inputStyles:{
@@ -106,7 +110,7 @@ const Styles = StyleSheet.create({
     borderWidth:1,
     borderColor:'#1A1851',
     textAlign:"center",
-    width:95,
+    width:150,
     height:30,
   },
 
@@ -137,8 +141,8 @@ const Styles = StyleSheet.create({
     display:'flex',
     flexDirection:'row',
     justifyContent:'space-between',
-    paddingHorizontal: 10,
-    paddingVertical:10,
+    paddingHorizontal: 60,
+    paddingVertical: 10,
   },
 
   noteStyle:{

@@ -5,34 +5,31 @@ import { Picker } from "@react-native-picker/picker";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { db } from "../../firebaseConfig";
 import { push, ref } from 'firebase/database';
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 const Calculator = () => {
   const [courseData, setCourseData] = useState([]);
   const [yearLevel, setYearLevel] = useState('');
   const [academicTerm, setAcademicTerm] = useState('');
-  const [academicYear, setAcademicYear] = useState('');
   const [gpa, setGpa] = useState('');
   const [remarks, setRemarks] = useState('');
   const [deansList, setDeansList] = useState('');
-  const [rank, setRank] = useState('');
   const [hasCalculatedGPA, setHasCalculatedGPA] = useState(false);
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
 
   const handleSave = () => {
-    if (!yearLevel || !academicTerm || !academicYear) {
-      Alert.alert("Incomplete Information", "Please select Year Level, Academic Term, and Academic Year.");
+    if (!yearLevel || !academicTerm) {
+      Alert.alert("Incomplete Information", "Please select Year Level and Academic Term");
     } else {
       const data = {
         courseData,
         yearLevel,
         academicTerm,
-        academicYear,
         gpa,
         remarks,
         deansList,
-        rank
       };
   
       Alert.alert(
@@ -68,32 +65,19 @@ const Calculator = () => {
 
 
   const addCourse = () => {
-    setCourseData([...courseData, { title: '', units: '', grade: '' }]);
+    setCourseData([...courseData, { title: '', grade: '' }]);
   };
 
-  const removeCourse = () => {
-    if (courseData.length > 1) {
-      setCourseData(courseData.slice(0, -1));
-    }
+  const removeCourse = (index) => {
+    const updatedCourseData = [...courseData];
+    updatedCourseData.splice(index, 1);
+    setCourseData(updatedCourseData);
   };
 
   const handleInputChange = (text, index, key) => {
     const updatedCourseData = [...courseData];
     updatedCourseData[index][key] = text;
     setCourseData(updatedCourseData);
-  };
-
-  const validateUnits = (text) => {
-    if (text === "") {
-      return true
-    }
-
-    if (/^\d+$/.test(text)) {
-      return true;
-    } else {
-      Alert.alert("Invalid Input", "Units must be a whole number.");
-      return false;
-    }
   };
 
   const validateGrade = (text) => {
@@ -113,7 +97,7 @@ const Calculator = () => {
   const calculateGpa = () => {
 
     for (const course of courseData) {
-      if (course.title === '' || course.units === '' || course.grade === '') {
+      if (course.title === '' || course.grade === '') {
         setGpa("");
         setRemarks("");
         setDeansList("");
@@ -126,12 +110,11 @@ const Calculator = () => {
     let hasLowGrade = false;
 
     courseData.forEach(course => {
-      const units = parseFloat(course.units);
       const grade = parseFloat(course.grade);
 
-      if (!isNaN(units) && !isNaN(grade)) {
-        totalGradePoints += units * grade;
-        totalUnits += units;
+      if (!isNaN(grade)) {
+        totalGradePoints += grade;
+        totalUnits += 1;
 
         // Check if any grade is below 2.5
         if (grade > 2.5) {
@@ -153,21 +136,16 @@ const Calculator = () => {
       if (calculatedGpa <= 1.75 && !hasLowGrade) {
         setDeansList("Yes");
         if (calculatedGpa > 0 && calculatedGpa <= 1.25) {
-          setRank('First Honor');
         }
         if (calculatedGpa > 1.25 && calculatedGpa <= 1.50) {
-          setRank('Second Honor');
         }
         if (calculatedGpa > 1.50 && calculatedGpa <= 1.75) {
-          setRank('Third Honor');
         }
       } else {
         setDeansList("No");
-        setRank("")
       }
       setHasCalculatedGPA(true);
     } else {
-      setRank("")
       setGpa("");
       setRemarks("");
       setDeansList("");
@@ -178,7 +156,6 @@ const Calculator = () => {
     setCourseData([]);
     setYearLevel('');
     setAcademicTerm('');
-    setAcademicYear('');
     setGpa("");
     setRemarks("");
     setDeansList("");
@@ -199,48 +176,22 @@ const Calculator = () => {
     <ScrollView contentContainerStyle={Styles.scrollViewContentContainer}>
       <View style={Styles.MainContainer}>
         <View style={Styles.HeaderContainer}>
-          <Image source={require('../../assets/images/Logo.png')}
+          <Image 
             style={{
-              height: 45,
-              width: 45,
+              height: 40,
+              width: 25,
             }} />
 
-          <Text style={Styles.title}>QuickGPA</Text>
+          <Text style={Styles.title}>Student Grade Average Calculator</Text>
 
           <TouchableOpacity onPress = {goToSaved}>
               <Image source={require('../../assets/images/history.png')}
                 style={{
                   width: 45,
-                  height: 45
+                  height: 40,
+                  marginTop: 25,
                 }} />
           </TouchableOpacity>
-        </View>
-
-        <View style={Styles.CourseContainer}>
-          <View style={Styles.textContainer}>
-            <Text style={Styles.CourseText}>Number of Courses: {courseData.length}</Text>
-          </View>
-
-          <View style={Styles.buttonsContainer}>
-            <TouchableOpacity onPress={removeCourse}>
-              <Image source={require('../../assets/images/Minus.png')}
-                style={{
-                  width: 25,
-                  height: 25,
-                  flexShrink: 0,
-                }} />
-            </TouchableOpacity>
-            <Text style={Styles.buttonLable}>Remove Course</Text>
-            <TouchableOpacity onPress={addCourse}>
-              <Image source={require('../../assets/images/add.png')}
-                style={{
-                  width: 25,
-                  height: 25,
-                  flexShrink: 0,
-                }} />
-            </TouchableOpacity>
-            <Text style={Styles.buttonLable}>Add Course</Text>
-          </View>
         </View>
 
         <View style={Styles.tableContainer}>
@@ -270,66 +221,59 @@ const Calculator = () => {
               <Picker.Item label="2nd Sem" value="2nd Sem" />
             </Picker>
 
-            <Picker
-              style={Styles.pickerStyle}
-              selectedValue={academicYear}
-              onValueChange={(itemValue, itemIndex) =>
-                setAcademicYear(itemValue)
-              }>
-              <Picker.Item label="Select Academic Year" value="" />
-              <Picker.Item label="2021 - 2022" value="2021 - 2022" />
-              <Picker.Item label="2022 - 2023" value="2022 - 2023" />
-              <Picker.Item label="2023 - 2024" value="2023 - 2024" />
-              <Picker.Item label="2024 - 2025" value="2024 - 2025" />
-              <Picker.Item label="2025 - 2026" value="2025 - 2026" />
-              <Picker.Item label="2026 - 2027" value="2026 - 2027" />
-              <Picker.Item label="2027 - 2028" value="2027 - 2028" />
-            </Picker>
+           <TouchableOpacity onPress={addCourse}>
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <Image source={require('../../assets/images/add.png')}
+      style={{
+        width: 25,
+        height: 25,
+        marginRight: 5
+      }} />
+    <Text style={Styles.colorText}>Add Course</Text>
+  </View>
+</TouchableOpacity>
+
           </View>
+
+          {courseData.map((course, index) => (
+  <View style={Styles.thirdrow} key={index}>
+    <TextInput
+      style={Styles.inputStyles}
+      placeholder="Course Title"
+      value={course.title}
+      onChangeText={(text) => handleInputChange(text, index, 'title')}
+    />
+    
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <TextInput
+        style={Styles.inputStyles}
+        placeholder="Grade"
+        value={course.grade}
+        onChangeText={(text) => {
+          if (validateGrade(text)) {
+            handleInputChange(text, index, 'grade');
+          }
+        }}
+        keyboardType="numeric"
+      />
+      {/* Remove the condition index > 0 here */}
+      <TouchableOpacity onPress={() => removeCourse(index)}>
+        <Icon name="close" size={25} color="black" />
+      </TouchableOpacity>
+    </View>
+  </View>
+))}
+
+
           <View style={Styles.secondrow}>
             <View style={Styles.textStyle}>
-              <Text style={Styles.colorText}>Course Title</Text>
-            </View>
-            <View style={Styles.textStyle}>
-              <Text style={Styles.colorText}>Units</Text>
+              <Text style={Styles.colorText}>Course</Text>
             </View>
             <View style={Styles.textStyle}>
               <Text style={Styles.colorText}>Grade</Text>
             </View>
           </View>
 
-          {courseData.map((course, index) => (
-            <View style={Styles.thirdrow} key={index}>
-              <TextInput
-                style={Styles.inputStyles}
-                placeholder="Course Title"
-                value={course.title}
-                onChangeText={(text) => handleInputChange(text, index, 'title')}
-              />
-              <TextInput
-                style={Styles.inputStyles}
-                placeholder="Units"
-                value={course.units}
-                onChangeText={(text) => {
-                  if (validateUnits(text)) {
-                    handleInputChange(text, index, 'units');
-                  }
-                }}
-                keyboardType="numeric"
-              />
-              <TextInput
-                style={Styles.inputStyles}
-                placeholder="Grade"
-                value={course.grade}
-                onChangeText={(text) => {
-                  if (validateGrade(text)) {
-                    handleInputChange(text, index, 'grade');
-                  }
-                }}
-                keyboardType="numeric"
-              />
-            </View>
-          ))}
 
           <View style={Styles.ResultStyle}>
             <View>
@@ -339,15 +283,14 @@ const Calculator = () => {
 
             <View>
               <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
-              <Text style={Styles.colorText}>Rank: {rank}</Text>
             </View>
           </View>
         </View>
 
         <View style={Styles.footerContainer}>
-          <View>
+          {/* <View>
             <Text style={Styles.noteStyle}>Note: Don’t include Physical Education (PE) and National Service Training Program (NSTP). Also only the final grade for the semester is required for calculating your general point-average.</Text>
-          </View>
+          </View> */}
 
           <View style={Styles.footerButton}>
             {hasCalculatedGPA && (
