@@ -54,38 +54,31 @@ const SavedScreen = () => {
       <View style={Styles.MainContainer}>
         <View style={Styles.HeaderContainer}>
           <Pressable onPress={goToCalculator}>
-            <Image source={require('../../assets/images/Logo.png')}
+            <Image source={require('../../assets/images/return.png')}
               style={{
-                height: 45,
-                width: 45,
+                height: 40,
+                width: 40,
+                marginLeft:-120,
+                marginTop: 30,
               }} />
           </Pressable>
 
-          <Text style={Styles.title}>QuickGPA</Text>
+          <Text style={Styles.title2}>History</Text>
 
-          <Image source={require('../../assets/images/history.png')}
-            style={{
-              width: 45,
-              height: 45
-            }} />
         </View>
 
         <View style={Save.tableContainer}>
           {Object.keys(savedData).map((key) => {
-            const { courseData, yearLevel, academicTerm, academicYear, gpa, remarks, deansList, rank } = savedData[key];
+            const { courseData, yearLevel, academicTerm, gpa, remarks, deansList } = savedData[key];
             return (
               <View key={key}>
                 <View style={Save.firstrow}>
                   <Text style={Save.colorText}>{yearLevel}</Text>
                   <Text style={Save.colorText}>{academicTerm}</Text>
-                  <Text style={Save.colorText}>{academicYear}</Text>
                 </View>
                 <View style={Save.secondrow}>
                   <View>
-                    <Text style={Save.textStyle}>Course Title</Text>
-                  </View>
-                  <View >
-                    <Text style={Save.textStyle}>Units</Text>
+                    <Text style={Save.textStyle}>Course</Text>
                   </View>
                   <View>
                     <Text style={Save.textStyle}>Grade</Text>
@@ -95,29 +88,26 @@ const SavedScreen = () => {
                 {courseData.map((course, index) => (
                   <View style={Save.thirdrow} key={index}>
                     <Text style={Save.thirdrowAlignment}>{course.title}</Text>
-                    <Text style={Save.thirdrowAlignment}>{course.units}</Text>
                     <Text style={Save.thirdrowAlignment}>{course.grade}</Text>
                   </View>
                 ))}
 
                 <View style={Save.ResultStyle}>
-                  <View>
-                    <Text style={Styles.colorText}>GPA:{gpa}</Text>
-                    <Text style={Styles.colorText}>Remarks: {remarks}</Text>
-                  </View>
+      <View>
+        <Text style={Styles.colorText}>GPA: {gpa}</Text>
+        <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
+       <Text style={Styles.colorText}>Remarks: {remarks}</Text>
+      </View>
 
-                  <View>
-                    <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
-                    <Text style={Styles.colorText}>Rank: {rank}</Text>
-                  </View>
-                  <View style={Styles.footerButton}>
-                    <Button 
-                      title="Delete"
-                      color={'#FF6418'}
-                      onPress={() => handleDelete(key)} // Pass the key to the delete function
-                    />
-                  </View>
-                </View>
+  <View style={Styles.delete}>
+    <Button 
+      title="Delete"
+      color={'red'}
+      onPress={() => handleDelete(key)} // Pass the key to the delete function
+    />
+  </View>
+</View>
+
               </View>
             );
           })}

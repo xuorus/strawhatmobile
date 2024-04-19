@@ -31,6 +31,17 @@ const Styles = StyleSheet.create({
     marginTop: 23,
   },
 
+  title2:{
+    textAlign: 'center',
+    fontSize: 30, 
+    fontStyle: 'normal',
+    fontWeight: '500',
+    color: 'white',
+    justifyContent: 'center',
+    marginTop: 23,
+    marginLeft: -160,
+  },
+
   CourseText:{
     fontSize: 20, 
     fontStyle: 'normal',
@@ -125,16 +136,16 @@ const Styles = StyleSheet.create({
     display:"flex",
     flexDirection: 'row',
     backgroundColor:'#1A1851',
-    alignItems:'center',
-    justifyContent:'space-around',
-    borderTopColor:'white',
-    borderWidth:2,
-    height: 70,
+    justifyContent:'center',
+    height: 80,
+    paddingBottom: 10,
+    paddingTop: 8,
   },
 
   footerContainer:{
     marginVertical:10,
     marginHorizontal: 25,
+    alignItems: 'center',
   },
 
   footerButton:{
@@ -143,6 +154,15 @@ const Styles = StyleSheet.create({
     justifyContent:'space-between',
     paddingHorizontal: 60,
     paddingVertical: 10,
+  },
+  
+  delete:{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingHorizontal: 60,
+    paddingVertical: 10,
+    marginRight: -17,
   },
 
   noteStyle:{
@@ -158,7 +178,17 @@ const Styles = StyleSheet.create({
     height: '3.75rem',
     flexShrink: 0,
     backgroundColor:'#FCB315'
-  }
+  },
+  textWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 60,
+    marginLeft: 25,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  
 
   
 

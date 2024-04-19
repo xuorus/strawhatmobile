@@ -187,9 +187,11 @@ const Calculator = () => {
           <TouchableOpacity onPress = {goToSaved}>
               <Image source={require('../../assets/images/history.png')}
                 style={{
-                  width: 45,
+                  width: 47,
                   height: 40,
                   marginTop: 25,
+                  marginRight: 20,
+                  marginLeft: 10,
                 }} />
           </TouchableOpacity>
         </View>
@@ -266,12 +268,16 @@ const Calculator = () => {
 
 
           <View style={Styles.secondrow}>
-            <View style={Styles.textStyle}>
-              <Text style={Styles.colorText}>Course</Text>
-            </View>
-            <View style={Styles.textStyle}>
-              <Text style={Styles.colorText}>Grade</Text>
-            </View>
+           <View style={Styles.secondrow}>
+  <View style={Styles.textWithIcon}>
+    <Icon name="book" size={20} color="#FFA500" style={Styles.icon} />
+    <Text style={Styles.colorText}>Course</Text>
+  </View>
+  <View style={Styles.textWithIcon}>
+    <Icon name="star" size={20} color="#FFA500" style={Styles.icon} />
+    <Text style={Styles.colorText}>Grade</Text>
+  </View>
+</View>
           </View>
 
 
@@ -279,9 +285,6 @@ const Calculator = () => {
             <View>
               <Text style={Styles.colorText}>GPA: {gpa !== '' ? gpa : ''}</Text>
               <Text style={Styles.colorText}>Remarks: {remarks}</Text>
-            </View>
-
-            <View>
               <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
             </View>
           </View>
