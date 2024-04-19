@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "QuickGPA",
+    "slug": "App",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/LogoQuickGPA.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/SplashScreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/Applogo.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.navareskenneth19.App"
+    },
+    "web": {
+      "favicon": "./assets/images/Applogo.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ce29eb88-f930-49a7-ae0d-c6ecec82a099"
+      }
+    }
+  }
+}
