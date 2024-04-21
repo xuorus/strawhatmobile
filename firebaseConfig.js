@@ -8,7 +8,8 @@ const firebaseConfig = {
     projectId: "strawhatcoders-c1028",
     storageBucket: "strawhatcoders-c1028.appspot.com",
     messagingSenderId: "1073430107906",
-    appId: "1:1073430107906:web:9b732ca20a0b1ad436941b"
+    appId: "1:1073430107906:web:9b732ca20a0b1ad436941b",
+    measurementId: "G-G4VK11KMN2"
 };
 
 if (firebase.apps.length === 0)
