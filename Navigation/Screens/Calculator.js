@@ -61,9 +61,6 @@ const Calculator = () => {
   };
 
   
-
-
-
   const addCourse = () => {
     setCourseData([...courseData, { title: '', grade: '' }]);
   };
