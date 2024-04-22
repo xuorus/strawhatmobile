@@ -113,7 +113,6 @@ const Calculator = () => {
         totalGradePoints += grade;
         totalUnits += 1;
 
-        // Check if any grade is below 2.5
         if (grade > 2.5) {
           hasLowGrade = true;
         }
@@ -156,7 +155,7 @@ const Calculator = () => {
     setGpa("");
     setRemarks("");
     setDeansList("");
-    setHasCalculatedGPA(false); // Reset the state when fields are reset
+    setHasCalculatedGPA(false);
   };
 
   useEffect(() => {
@@ -288,10 +287,6 @@ const Calculator = () => {
         </View>
 
         <View style={Styles.footerContainer}>
-          {/* <View>
-            <Text style={Styles.noteStyle}>Note: Don’t include Physical Education (PE) and National Service Training Program (NSTP). Also only the final grade for the semester is required for calculating your general point-average.</Text>
-          </View> */}
-
           <View style={Styles.footerButton}>
             {hasCalculatedGPA && (
               <>

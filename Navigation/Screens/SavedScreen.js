@@ -21,7 +21,7 @@ const SavedScreen = () => {
           console.log("No data available");
         }
       }, {
-        onlyOnce: true // This option ensures the callback is called only once
+        onlyOnce: true
       });
     };
 
@@ -36,7 +36,6 @@ const SavedScreen = () => {
     const databaseRef = ref(db, 'savedData', key);
     remove(databaseRef)
       .then(() => {
-        // Remove the deleted data from the local state
         setSavedData((prevData) => {
           const newData = { ...prevData };
           delete newData[key];
@@ -103,7 +102,7 @@ const SavedScreen = () => {
     <Button 
       title="Delete"
       color={'red'}
-      onPress={() => handleDelete(key)} // Pass the key to the delete function
+      onPress={() => handleDelete(key)}
     />
   </View>
 </View>
