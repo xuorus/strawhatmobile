@@ -7,16 +7,16 @@ import { db } from "../../firebaseConfig";
 import { ref, onValue, remove } from 'firebase/database';
 
 const SavedScreen = () => {
-  const [savedData, setSavedData] = useState([]);
+  const [grades, setGrades] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
     const fetchData = () => {
-      const databaseRef = ref(db, 'savedData');
+      const databaseRef = ref(db, 'grades');
       onValue(databaseRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
-          setSavedData(data);
+          setGrades(Object.values(data)); // Convert object values to array
         } else {
           console.log("No data available");
         }
@@ -29,15 +29,11 @@ const SavedScreen = () => {
   }, []);
 
   const handleDelete = (key) => {
-    const databaseRef = ref(db, 'savedData', key);
+    const databaseRef = ref(db, 'grades', key);
     remove(databaseRef)
       .then(() => {
-        // Remove the deleted data from the local state
-        setSavedData((prevData) => {
-          const newData = { ...prevData };
-          delete newData[key];
-          return newData;
-        });
+        // Remove the deleted item from the grades array
+        setGrades(prevGrades => prevGrades.filter(item => item.key !== key));
         console.log("Data deleted successfully");
       })
       .catch((error) => {
@@ -53,8 +49,8 @@ const SavedScreen = () => {
         </View>
 
         <View style={Save.tableContainer}>
-          {Object.keys(savedData).map((key) => {
-            const { courseData, yearLevel, academicTerm, gpa, remarks, deansList } = savedData[key];
+          {grades.map((item) => {
+            const { key, courseData, yearLevel, academicTerm, gpa, remarks, deansList } = item;
             return (
               <View key={key}>
                 <View style={Save.firstrow}>

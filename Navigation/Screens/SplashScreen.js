@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000', // Adjust the background color
   },
   logo: {
-    width: 1000, // Adjust the width of your logo
-    height: 1000, // Adjust the height of your logo
+    width: 500, // Adjust the width of your logo
+    height: 330, // Adjust the height of your logo
     resizeMode: 'contain', // Adjust the resizeMode based on your image aspect ratio
   },
 });

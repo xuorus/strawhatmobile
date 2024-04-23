@@ -43,8 +43,12 @@ const Calculator = () => {
           {
             text: "Save",
             onPress: () => {
-              // Push data to Firebase
-              push(ref(db, 'savedData'), data)
+              // Generate a new child location using push
+              const newGradeRef = push(ref(db, 'grades'));
+              const newGradeKey = newGradeRef.key;
+  
+              // Set the data at the generated key
+              set(ref(db, 'grades/' + newGradeKey), data)
                 .then(() => {
                   Alert.alert("Success", "Data successfully saved! Click Button located at the upper right corner to see saved calculations.");
                   resetFields();
@@ -59,7 +63,6 @@ const Calculator = () => {
       );
     }
   };
-
   
 
 
