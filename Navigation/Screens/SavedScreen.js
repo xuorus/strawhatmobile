@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, ScrollView, Image, Pressable, Button } from "react-native";
+import { Text, View, ScrollView, Image, Button } from "react-native";
 import Styles from "../../Styles/mainStyles";
 import Save from "../../Styles/ScreenStyle";
 import { useNavigation } from "@react-navigation/native";
@@ -21,21 +21,18 @@ const SavedScreen = () => {
           console.log("No data available");
         }
       }, {
-        onlyOnce: true
+        onlyOnce: true // This option ensures the callback is called only once
       });
     };
 
     fetchData();
   }, []);
 
-  const goToCalculator = () => {
-    navigation.navigate('QuickGPA - Calculator');
-  };
-
   const handleDelete = (key) => {
     const databaseRef = ref(db, 'savedData', key);
     remove(databaseRef)
       .then(() => {
+        // Remove the deleted data from the local state
         setSavedData((prevData) => {
           const newData = { ...prevData };
           delete newData[key];
@@ -52,18 +49,7 @@ const SavedScreen = () => {
     <ScrollView contentContainerStyle={Styles.scrollViewContentContainer}>
       <View style={Styles.MainContainer}>
         <View style={Styles.HeaderContainer}>
-          <Pressable onPress={goToCalculator}>
-            <Image source={require('../../assets/images/return.png')}
-              style={{
-                height: 40,
-                width: 40,
-                marginLeft:-120,
-                marginTop: 30,
-              }} />
-          </Pressable>
-
           <Text style={Styles.title2}>History</Text>
-
         </View>
 
         <View style={Save.tableContainer}>
@@ -92,21 +78,20 @@ const SavedScreen = () => {
                 ))}
 
                 <View style={Save.ResultStyle}>
-      <View>
-        <Text style={Styles.colorText}>GPA: {gpa}</Text>
-        <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
-       <Text style={Styles.colorText}>Remarks: {remarks}</Text>
-      </View>
+                  <View>
+                    <Text style={Styles.colorText}>GPA: {gpa}</Text>
+                    <Text style={Styles.colorText}>Dean's Lister: {deansList}</Text>
+                    <Text style={Styles.colorText}>Remarks: {remarks}</Text>
+                  </View>
 
-  <View style={Styles.delete}>
-    <Button 
-      title="Delete"
-      color={'red'}
-      onPress={() => handleDelete(key)}
-    />
-  </View>
-</View>
-
+                  <View style={Styles.delete}>
+                    <Button 
+                      title="Delete"
+                      color={'red'}
+                      onPress={() => handleDelete(key)} // Pass the key to the delete function
+                    />
+                  </View>
+                </View>
               </View>
             );
           })}
