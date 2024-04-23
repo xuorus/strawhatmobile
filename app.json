@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "QuickGPA",
-    "slug": "App",
+    "slug": "strawhatmobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/LogoQuickGPA.png",
@@ -32,7 +32,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "ce29eb88-f930-49a7-ae0d-c6ecec82a099"
+        "projectId": "63e940ac-2d3d-4bd9-a0da-a232b018ac50"
       }
     }
   }
