@@ -1,16 +1,18 @@
 import React from "react";
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import Styles from "../../Styles/mainStyles"; // Import your existing styles
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const History = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const { studentData } = route.params; // Receive studentData from route params
 
   const handleData = () => {
     // Implement your button logic here
     console.log("Data button pressed");
-    navigation.navigate('Detailed_Data');
+    navigation.navigate('Detailed_Data', { studentData }); // Pass studentData to the next screen
   };
 
   const handleSort = () => {
@@ -21,9 +23,9 @@ const History = () => {
   const handleLogout = () => {
     // Implement your button logic here
     console.log("Logout button pressed");
-    navigation.goBack()
+    navigation.goBack();
   };
-  
+
   return (
     <View style={{ flex: 1, backgroundColor: '#0b1933' }}>
       {/* Fixed header for History text */}
@@ -32,14 +34,14 @@ const History = () => {
       </View>
 
       {/* Background color behind the scrolled data buttons */}
-      <ScrollView contentContainerStyle={{ flexGrow: 1,paddingTop: 50, paddingBottom: 20 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1, paddingTop: 50, paddingBottom: 20 }}>
         <View style={{ backgroundColor: '#0b1933', paddingHorizontal: 20 }}>
           {/* Data Buttons */}
-          {[1].map(dataNumber => (
-            <TouchableOpacity key={dataNumber} onPress={handleData} style={{ marginBottom: 20 }}>
-              <Text style={{ backgroundColor: '#fcb414', paddingVertical: 20, paddingHorizontal: 150, borderRadius: 20, alignSelf: 'center', color: 'white' }}>Data {dataNumber}</Text>
-            </TouchableOpacity>
-          ))}
+          <TouchableOpacity onPress={handleData} style={{ marginBottom: 20 }}>
+            <Text style={{ backgroundColor: '#fcb414', paddingVertical: 20, paddingHorizontal: 150, borderRadius: 20, alignSelf: 'center', color: 'white' }}>
+              {`Data for ${studentData.id}`} {/* Display student data */}
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
 

@@ -3,7 +3,7 @@ import { Text, View, Image, TextInput, TouchableOpacity, ScrollView, Alert } fro
 import Styles from "../../Styles/mainStyles";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { db } from "../../firebaseConfig";
-import { ref, get, query, orderByChild, equalTo } from 'firebase/database'; // Import necessary Firebase functions
+import { ref, get, query, orderByChild, equalTo } from 'firebase/database';
 import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 const Calculator = () => {
@@ -46,7 +46,6 @@ const Calculator = () => {
   };
 
   const handleLogin = () => {
-    // Implement your login logic here
     console.log("Login button pressed");
     if (studentData) {
       navigation.navigate('History', { studentData });
