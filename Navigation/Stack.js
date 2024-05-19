@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Calculator from "./Screens/Calculator";
 import History from "./Screens/History";
 import SplashScreen from "./Screens/SplashScreen";
+import DetailedData from "./Screens/Detailed_Data";
 const Stack = createNativeStackNavigator();
 
 const AuthenticationStack = () => {
@@ -16,6 +17,7 @@ const AuthenticationStack = () => {
       <Stack.Screen name= "SplashScreen" component={SplashScreen}></Stack.Screen>
       <Stack.Screen name="Calculator" component={Calculator}></Stack.Screen>
       <Stack.Screen name="History" component={History} ></Stack.Screen>
+      <Stack.Screen name="DetailedData" component={DetailedData} ></Stack.Screen>
     </Stack.Navigator>
   );
 };

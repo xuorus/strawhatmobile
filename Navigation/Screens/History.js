@@ -10,6 +10,7 @@ const History = () => {
   const handleData = () => {
     // Implement your button logic here
     console.log("Data button pressed");
+    navigation.navigate('DetailedData');
   };
 
   const handleSort = () => {
@@ -20,22 +21,23 @@ const History = () => {
   const handleLogout = () => {
     // Implement your button logic here
     console.log("Logout button pressed");
+    navigation.goBack()
   };
   
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#0b1933' }}>
       {/* Fixed header for History text */}
-      <View style={{ backgroundColor: '#0b1933', marginTop: 30 ,paddingVertical: 40, alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>History</Text>
+      <View style={{ backgroundColor: '#0b1933', paddingTop: 70, alignItems: 'center' }}>
+        <Text style={{ fontSize: 30, color: 'white', fontWeight: 'bold' }}>History</Text>
       </View>
 
       {/* Background color behind the scrolled data buttons */}
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={{ backgroundColor: '#0b1933', paddingBottom: 10 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1,paddingTop: 50, paddingBottom: 20 }}>
+        <View style={{ backgroundColor: '#0b1933', paddingHorizontal: 20 }}>
           {/* Data Buttons */}
-          {[1, 2, 3, 4, 5, 6, 7].map(dataNumber => (
-            <TouchableOpacity key={dataNumber} onPress={handleData}>
-              <Text style={{ backgroundColor: '#fcb414', paddingVertical: 30, paddingHorizontal: 150, borderRadius: 20, marginTop: 20, alignSelf: 'center', color: 'white' }}>Data {dataNumber}</Text>
+          {[1].map(dataNumber => (
+            <TouchableOpacity key={dataNumber} onPress={handleData} style={{ marginBottom: 20 }}>
+              <Text style={{ backgroundColor: '#fcb414', paddingVertical: 20, paddingHorizontal: 150, borderRadius: 20, alignSelf: 'center', color: 'white' }}>Data {dataNumber}</Text>
             </TouchableOpacity>
           ))}
         </View>
