@@ -4,13 +4,15 @@ const Styles = StyleSheet.create({
 
   scrollViewContentContainer: {
     flexGrow:1,
-    paddingBottom: 20 // Adjust this value as needed
   },
   
   MainContainer: {
     flex:1,
     overflow:'scroll',
     alignContent:'center',
+    backgroundColor: '#0b1933',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   HeaderContainer:{
     display:'flex',
@@ -23,12 +25,13 @@ const Styles = StyleSheet.create({
 
   title:{
     textAlign: 'center',
-    fontSize: 20, 
+    fontSize: 25, 
     fontStyle: 'normal',
     fontWeight: '500',
     color: '#FFF',
     justifyContent: 'center',
-    marginTop: 23,
+    marginTop: 5,
+    marginBottom: 10,
   },
 
   title2:{
@@ -189,11 +192,53 @@ const Styles = StyleSheet.create({
     marginRight: 5,
   },
   
-
-  
-
-
-  
+  logo:{
+  width: 350,
+  height: 150,
+  resizeMode: 'contain',
+  marginBottom: 10,
+  },
+  inputContainer: {
+    width: '80%',
+    marginTop: 30,
+  },
+  inputLabel: {
+    fontSize: 14,
+    marginBottom: 5,
+    color: 'white',
+  },
+  input: {
+    height: 40,
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 10,
+    color: 'white',
+  },
+  inputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  clearButton: {
+    position: 'absolute',
+    marginTop: 35,
+    right: 10,
+  },
+  loginButton: {
+    backgroundColor: '#fcb414',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  loginButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
 export default Styles;

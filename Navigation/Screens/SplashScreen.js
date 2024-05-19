@@ -8,8 +8,8 @@ const SplashScreen = ({ navigation }) => {
     // Simulate a loading process
     setTimeout(() => {
       // Navigate to the Save screen after the splash screen
-      navigation.replace('SavedScreen'); // Replace 'LogIn' with the actual name of your Login screen
-    }, 5000); 
+      navigation.replace('Calculator'); // Replace 'LogIn' with the actual name of your Login screen
+    }, 3000); 
   }, [navigation]);
 
   return (
@@ -18,7 +18,7 @@ const SplashScreen = ({ navigation }) => {
         animation="bounceIn"
         easing="ease-in-out"
         iterationCount={1}
-        source={require('../../assets/writing-fire.gif')} 
+        source={require('../../assets/images/logo.png')} 
         style={styles.logo}
         resizeMode="contain"
       />
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000', // Adjust the background color
   },
   logo: {
-    width: 500, // Adjust the width of your logo
-    height: 330, // Adjust the height of your logo
+    width: 400, // Adjust the width of your logo
+    height: 230, // Adjust the height of your logo
     resizeMode: 'contain', // Adjust the resizeMode based on your image aspect ratio
   },
 });
