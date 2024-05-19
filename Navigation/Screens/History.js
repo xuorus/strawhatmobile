@@ -10,7 +10,7 @@ const History = () => {
   const handleData = () => {
     // Implement your button logic here
     console.log("Data button pressed");
-    navigation.navigate('DetailedData');
+    navigation.navigate('Detailed_Data');
   };
 
   const handleSort = () => {

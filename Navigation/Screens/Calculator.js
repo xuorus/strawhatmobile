@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, TextInput, TouchableOpacity, ScrollView, Button, Alert } from "react-native";
+import { Text, View, Image, TextInput, TouchableOpacity, ScrollView, Alert } from "react-native";
 import Styles from "../../Styles/mainStyles";
-import { Picker } from "@react-native-picker/picker";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { db } from "../../firebaseConfig";
-import { ref, get } from 'firebase/database'; // Import get method for querying
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { ref, get, query, orderByChild, equalTo } from 'firebase/database'; // Import necessary Firebase functions
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 const Calculator = () => {
   const [idNumber, setIdNumber] = useState('');
@@ -21,12 +20,15 @@ const Calculator = () => {
 
     if (numericText.length > 0) {
       try {
-        const studentRef = ref(db, `students/${numericText}`);
-        const snapshot = await get(studentRef);
+        const gradesRef = ref(db, 'grades');
+        const gradesQuery = query(gradesRef, orderByChild('id'), equalTo(numericText));
+        const snapshot = await get(gradesQuery);
 
         if (snapshot.exists()) {
-          setStudentData(snapshot.val());
-          console.log("Student data found: ", snapshot.val());
+          const data = snapshot.val();
+          const studentData = Object.values(data)[0]; // Assuming the first match is the correct one
+          setStudentData(studentData);
+          console.log("Student data found: ", studentData);
         } else {
           setStudentData(null);
           console.log("No data available");
@@ -47,7 +49,7 @@ const Calculator = () => {
     // Implement your login logic here
     console.log("Login button pressed");
     if (studentData) {
-      navigation.navigate('StudentDetails', { studentData });
+      navigation.navigate('History', { studentData });
     } else {
       Alert.alert("Error", "Student ID not found");
     }
@@ -58,7 +60,7 @@ const Calculator = () => {
       <View style={Styles.MainContainer}>
         <View style={Styles.logoContainer}>
           <Image
-            source={require('../../assets/images/logo.png')} // Adjust the path to your logo image
+            source={require('../../assets/images/Logo.png')} // Adjust the path to your logo image
             style={Styles.logo}
           />
           <Text style={Styles.title}>Student Grade</Text>
