@@ -47,9 +47,9 @@ const History = () => {
 
       {/* Fixed Buttons with Background */}
       <View style={{ backgroundColor: '#0b1933', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 20 }}>
-        <TouchableOpacity onPress={handleSort}>
+        {/*<TouchableOpacity onPress={handleSort}>
           <Text style={{ backgroundColor: '#fcb414', paddingVertical: 15, paddingHorizontal: 50, borderRadius: 20, marginRight: 10, color: 'white' }}>Sort</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
         <TouchableOpacity onPress={handleLogout}>
           <Text style={{ backgroundColor: '#fcb414', paddingVertical: 15, paddingHorizontal: 50, borderRadius: 20, color: 'white' }}>Logout</Text>
         </TouchableOpacity>
