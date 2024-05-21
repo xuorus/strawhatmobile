@@ -59,7 +59,7 @@ const Calculator = () => {
       <View style={Styles.MainContainer}>
         <View style={Styles.logoContainer}>
           <Image
-            source={require('../../assets/images/logo.png')} // Adjust the path to your logo image
+            source={require('../../assets/images/Logo.png')} // Adjust the path to your logo image
             style={Styles.logo}
           />
           <Text style={Styles.title}>Student Grade</Text>
