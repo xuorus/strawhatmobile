@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 const AuthenticationStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Calculator"
+      initialRouteName="SplashScreen"
       screenOptions={{
         headerShown: false,
       }}
