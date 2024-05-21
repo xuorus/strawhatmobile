@@ -37,11 +37,11 @@ const History = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1, paddingTop: 50, paddingBottom: 20 }}>
         <View style={{ backgroundColor: '#0b1933', paddingHorizontal: 20 }}>
           {/* Data Buttons */}
-          <TouchableOpacity onPress={handleData} style={{ marginBottom: 20 }}>
-            <Text style={{ backgroundColor: '#fcb414', paddingVertical: 20, paddingHorizontal: 150, borderRadius: 20, alignSelf: 'center', color: 'white' }}>
-              {`Data for ${studentData.id}`} {/* Display student data */}
-            </Text>
-          </TouchableOpacity>
+          <TouchableOpacity onPress={handleData} style={{ marginBottom: 20, alignItems: 'center' }}>
+      <Text style={{ backgroundColor: '#fcb414', fontSize: 20, paddingVertical: 30, paddingHorizontal: 80, borderRadius: 20, color: 'white', textAlign: 'center' }}>
+        {`Data for ${studentData.id}`} {/* Display student data */}
+     </Text>
+            </TouchableOpacity>
         </View>
       </ScrollView>
 
