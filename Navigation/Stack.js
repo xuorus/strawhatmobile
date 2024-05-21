@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 const AuthenticationStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Detailed_Data"
+      initialRouteName="SplashScreen"
       screenOptions={{
         headerShown: false,
       }}

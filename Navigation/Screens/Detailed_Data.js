@@ -25,21 +25,7 @@ const Detailed_Data = () => {
       {/* White container */}
       <View style={{ backgroundColor: 'white', width: '90%', height: '70%', paddingHorizontal: 20, paddingVertical: 20, borderRadius: 10 }}>
         {/* Display student data */}
-        {/* Four additional containers */}
-        <View style={{ flex: 1, justifyContent: 'center', marginVertical:5 }}>
-        <View style={{ backgroundColor: '#0b1933', width: '100%', height: '20%', borderRadius: 10 }}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ID: {studentData.id}</Text> </View>
-          <View style={{ backgroundColor: 'gray', width: '100%', height: '20%', borderRadius: 10, marginTop: 10 }} />
-          <View style={{ backgroundColor: 'white', width: '100%', height: '20%', borderRadius: 10, borderColor: 'black', borderWidth: 2, marginTop: 10, marginBottom: 10 }} />
-          <View style={{ backgroundColor: '#fcb414', width: '100%', height: '20%', borderRadius: 10}} />
-        </View>
-      </View>
-    </View>
-  );
-};
-
-export default Detailed_Data;
- {/* <ScrollView>
+        <ScrollView>
           <View style={{ marginBottom: 10 }}>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ID: {studentData.id}</Text>
           </View>
@@ -55,4 +41,10 @@ export default Detailed_Data;
           <View style={{ marginBottom: 10 }}>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Remarks: {studentData.remarks}</Text>
           </View>
-        </ScrollView> */}
+        </ScrollView>
+      </View>
+    </View>
+  );
+};
+
+export default Detailed_Data;
