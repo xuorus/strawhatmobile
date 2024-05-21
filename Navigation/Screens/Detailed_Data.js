@@ -13,13 +13,13 @@ const Detailed_Data = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#0b1933', justifyContent: 'center', alignItems: 'center' }}>
       {/* Back button */}
-      <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 20, top: 115 }}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 340, top: 119 }}>
         <FontAwesomeIcon icon={faArrowLeft} size={24} color="white" />
       </TouchableOpacity>
 
       {/* Fixed header for History text */}
-      <View style={{ paddingVertical: 40, alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>History</Text>
+      <View style={{ paddingVertical: 40, alignItems: 'center', left: -110 }}>
+        <Text style={{ fontSize: 35, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>History</Text>
       </View>
 
       {/* White container */}
