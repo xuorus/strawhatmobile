@@ -39,7 +39,7 @@ const History = () => {
           {/* Data Buttons */}
           <TouchableOpacity onPress={handleData} style={{ marginBottom: 20, alignItems: 'center' }}>
       <Text style={{ backgroundColor: '#fcb414', fontSize: 20, paddingVertical: 30, paddingHorizontal: 80, borderRadius: 20, color: 'white', textAlign: 'center' }}>
-        {`Data for ${studentData.id}`} {/* Display student data */}
+        {`View Student`} {/* Display student data */}
      </Text>
             </TouchableOpacity>
         </View>
@@ -47,9 +47,6 @@ const History = () => {
 
       {/* Fixed Buttons with Background */}
       <View style={{ backgroundColor: '#0b1933', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 20 }}>
-        <TouchableOpacity onPress={handleSort}>
-          <Text style={{ backgroundColor: '#fcb414', paddingVertical: 15, paddingHorizontal: 50, borderRadius: 20, marginRight: 10, color: 'white' }}>Sort</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={handleLogout}>
           <Text style={{ backgroundColor: '#fcb414', paddingVertical: 15, paddingHorizontal: 50, borderRadius: 20, color: 'white' }}>Logout</Text>
         </TouchableOpacity>
