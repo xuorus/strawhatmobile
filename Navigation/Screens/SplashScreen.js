@@ -18,7 +18,7 @@ const SplashScreen = ({ navigation }) => {
         animation="bounceIn"
         easing="ease-in-out"
         iterationCount={1}
-        source={require('../../assets/images/Logo.png')} 
+        source={require('../../assets/images/logo.png')} 
         style={styles.logo}
         resizeMode="contain"
       />
