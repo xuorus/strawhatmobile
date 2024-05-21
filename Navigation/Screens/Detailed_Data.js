@@ -49,21 +49,3 @@ const Detailed_Data = () => {
 };
 
 export default Detailed_Data;
-
-{/* <ScrollView>
-          <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>ID: {studentData.id}</Text>
-          </View>
-          <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Name: {studentData.name}</Text>
-          </View>
-          <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>GPA: {studentData.gpa}</Text>
-          </View>
-          <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Dean's List: {studentData.deansList}</Text>
-          </View>
-          <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Remarks: {studentData.remarks}</Text>
-          </View>
-        </ScrollView> */}
