@@ -39,7 +39,7 @@ const History = () => {
           {/* Data Buttons */}
           <TouchableOpacity onPress={handleData} style={{ marginBottom: 20, alignItems: 'center' }}>
       <Text style={{ backgroundColor: '#fcb414', fontSize: 20, paddingVertical: 30, paddingHorizontal: 80, borderRadius: 20, color: 'white', textAlign: 'center' }}>
-        {`View Student`} {/* Display student data */}
+        {`View Grade History`} {/* Display student data */}
      </Text>
             </TouchableOpacity>
         </View>
