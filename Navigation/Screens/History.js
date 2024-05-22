@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity, Alert } from "react-native";
 import Styles from "../../Styles/mainStyles"; // Import your existing styles
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -22,6 +22,7 @@ const History = () => {
 
   const handleLogout = () => {
     // Implement your button logic here
+    Alert.alert("Success", "Logout Successfully");
     console.log("Logout button pressed");
     navigation.goBack();
   };
