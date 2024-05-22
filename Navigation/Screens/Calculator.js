@@ -12,9 +12,7 @@ const Calculator = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
-  // Function to handle text change and ensure only numbers are inputted
   const handleIdNumberChange = async (text) => {
-    // Remove any non-numeric characters
     const numericText = text.replace(/[^0-9]/g, '');
     setIdNumber(numericText);
 
@@ -26,7 +24,7 @@ const Calculator = () => {
 
         if (snapshot.exists()) {
           const data = snapshot.val();
-          const studentData = Object.values(data)[0]; // Assuming the first match is the correct one
+          const studentData = Object.values(data)[0];
           setStudentData(studentData);
           console.log("Student data found: ", studentData);
         } else {
@@ -39,7 +37,6 @@ const Calculator = () => {
     }
   };
 
-  // Function to clear the text input
   const clearText = () => {
     setIdNumber('');
     setStudentData(null);
@@ -60,7 +57,7 @@ const Calculator = () => {
       <View style={Styles.MainContainer}>
         <View style={Styles.logoContainer}>
           <Image
-            source={require('../../assets/images/logo.png')} // Adjust the path to your logo image
+            source={require('../../assets/images/logo.png')}
             style={Styles.logo}
           />
           <Text style={Styles.title}>Student Grade</Text>
@@ -68,7 +65,10 @@ const Calculator = () => {
         </View>
         <View style={Styles.inputContainer}>
           <Text style={Styles.inputLabel}>ID Number</Text>
-          <View style={Styles.inputWrapper}>
+          <View style={[
+            Styles.inputWrapper,
+            idNumber.length > 0 && idNumber.length !== 10 ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
+          ]}>
             <TextInput
               style={Styles.input}
               keyboardType="numeric"
