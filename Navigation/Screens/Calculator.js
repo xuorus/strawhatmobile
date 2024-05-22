@@ -48,6 +48,7 @@ const Calculator = () => {
   const handleLogin = () => {
     console.log("Login button pressed");
     if (studentData) {
+      Alert.alert("Success", "Login Successfully");
       navigation.navigate('History', { studentData });
     } else {
       Alert.alert("Error", "Student ID not found");

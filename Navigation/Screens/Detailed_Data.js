@@ -23,24 +23,24 @@ const Detailed_Data = () => {
       </View>
 
       {/* White container */}
-      <View style={{ backgroundColor: 'white', width: '90%', height: '70%', paddingHorizontal: 20, paddingVertical: 20, borderRadius: 10 }}>
+      <View style={{ backgroundColor: 'white', width: '90%', height: '60%', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 10 }}>
         {/* Four additional containers */}
-        <View style={{ flex: 1, justifyContent: 'center', marginVertical:5 }}>
+        <View style={{ flex: 1, justifyContent: 'center', marginVertical:-30 }}>
           <View style={{ backgroundColor: '#0b1933', justifyContent: 'center', width: '100%', height: '20%', borderRadius: 10 }}>
-          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 20 }}>ID: {studentData.id}</Text>
+          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 30 }}>ID: {studentData.id}</Text>
           </View>
 
           <View style={{ backgroundColor: '#EBECF0', justifyContent: 'center', width: '100%', height: '20%', borderRadius: 10, marginTop: 10 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Name: {studentData.name}</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 30 }}>Name: {studentData.name}</Text>
           </View>
 
           <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', width: '100%', height: '20%', borderRadius: 10, marginTop: 10, marginBottom: 10 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>GPA: {studentData.gpa}</Text>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>GPA: {studentData.gpa}</Text>
           </View>
 
           <View style={{ backgroundColor: '#fcb414', justifyContent: 'center', width: '100%', height: '20%', borderRadius: 10}}>
-          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 20 }}>Dean's List: {studentData.deansList}</Text>
-          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 20 }}>Remarks: {studentData.remarks}</Text>
+          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 30 }}>Dean's List: {studentData.deansList}</Text>
+          <Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold', marginLeft: 30 }}>Remarks: {studentData.remarks}</Text>
           </View>
         </View> 
       </View>
