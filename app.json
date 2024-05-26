@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Student Calculator",
-    "slug": "strawhatmobile",
+    "slug": "strawhatmobile10",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/Applogo.png",
@@ -22,18 +22,19 @@
         "foregroundImage": "./assets/images/Applogo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.navareskenneth19.App"
+      "package": "com.strawhatmobile10.App"
     },
     "web": {
-      "favicon": "./assets/images/Applogo.png"
+      "favicon": "./assets/icon.png"
     },
     "plugins": [
       "expo-font"
     ],
     "extra": {
       "eas": {
-        "projectId": "63e940ac-2d3d-4bd9-a0da-a232b018ac50"
+        "projectId": "d5a7589b-f1a0-418f-bfc3-88bb9c3fcfbc"
       }
-    }
+    },
+    "owner": "xuorus"
   }
 }
