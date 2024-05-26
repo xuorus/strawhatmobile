@@ -4,11 +4,13 @@ import Styles from "../../Styles/mainStyles";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { db } from "../../firebaseConfig";
 import { ref, get, query, orderByChild, equalTo } from 'firebase/database';
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Calculator = () => {
   const [idNumber, setIdNumber] = useState('');
+  const [password, setPassword] = useState('');
   const [studentData, setStudentData] = useState(null);
+  const [loginAttempted, setLoginAttempted] = useState(false);
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
@@ -39,16 +41,21 @@ const Calculator = () => {
 
   const clearText = () => {
     setIdNumber('');
+    setPassword('');
     setStudentData(null);
+    setLoginAttempted(false);
   };
 
   const handleLogin = () => {
     console.log("Login button pressed");
-    if (studentData) {
+    setLoginAttempted(true);
+
+    if (studentData && idNumber === password) {
       Alert.alert("Success", "Login Successfully");
       navigation.navigate('History', { studentData });
+      setLoginAttempted(false);
     } else {
-      Alert.alert("Error", "Student ID not found");
+      Alert.alert("Error", "Invalid Student ID or Password");
     }
   };
 
@@ -67,7 +74,7 @@ const Calculator = () => {
           <Text style={Styles.inputLabel}>ID Number</Text>
           <View style={[
             Styles.inputWrapper,
-            idNumber.length > 0 && idNumber.length !== 10 ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
+            loginAttempted && (!studentData || idNumber !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
           ]}>
             <TextInput
               style={Styles.input}
@@ -84,6 +91,29 @@ const Calculator = () => {
             )}
           </View>
         </View>
+        
+        <View style={Styles.inputContainer}>
+          <Text style={Styles.inputLabel}>Password</Text>
+          <View style={[
+            Styles.inputWrapper,
+            loginAttempted && (!studentData || idNumber !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
+          ]}>
+            <TextInput
+              style={Styles.input}
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Enter your password"
+              placeholderTextColor="white"
+            />
+            {password !== '' && (
+              <TouchableOpacity onPress={() => setPassword('')} style={Styles.clearButton}>
+                <Icon name="clear" size={20} color="white" />
+              </TouchableOpacity>
+            )}
+          </View>
+        </View>
+        
         <TouchableOpacity onPress={handleLogin} style={Styles.loginButton}>
           <Text style={Styles.loginButtonText}>Login</Text>
         </TouchableOpacity>

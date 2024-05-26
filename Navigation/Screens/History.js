@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, ScrollView, TouchableOpacity, Alert } from "react-native";
 import Styles from "../../Styles/mainStyles"; // Import your existing styles
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -8,10 +8,27 @@ const History = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { studentData } = route.params; // Receive studentData from route params
+  const [existingData, setExistingData] = useState([]);
 
   const handleData = () => {
     // Implement your button logic here
     console.log("Data button pressed");
+    // Check if student ID already exists
+    const existingStudent = existingData.find(data => data.id === studentData.id);
+    if (existingStudent) {
+      // If student ID exists, update the existing data or add new data
+      const updatedData = existingData.map(data => {
+        if (data.id === studentData.id) {
+          // Update existing data
+          return { ...data, /* Update data fields here */ };
+        }
+        return data;
+      });
+      setExistingData(updatedData);
+    } else {
+      // If student ID doesn't exist, add new data
+      setExistingData(prevData => [...prevData, studentData]);
+    }
     navigation.navigate('Detailed_Data', { studentData }); // Pass studentData to the next screen
   };
 
@@ -39,10 +56,10 @@ const History = () => {
         <View style={{ backgroundColor: '#0b1933', paddingHorizontal: 20 }}>
           {/* Data Buttons */}
           <TouchableOpacity onPress={handleData} style={{ marginBottom: 20, alignItems: 'center' }}>
-      <Text style={{ backgroundColor: '#fcb414', fontSize: 20, paddingVertical: 30, paddingHorizontal: 80, borderRadius: 20, color: 'white', textAlign: 'center' }}>
-        {`View Grade History`} {/* Display student data */}
-     </Text>
-            </TouchableOpacity>
+            <Text style={{ backgroundColor: '#fcb414', fontSize: 20, paddingVertical: 30, paddingHorizontal: 80, borderRadius: 20, color: 'white', textAlign: 'center' }}>
+              {`View Grade History`} {/* Display student data */}
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
 
