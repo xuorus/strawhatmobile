@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Text, View, Image, TextInput, TouchableOpacity, ScrollView, Alert } from "react-native";
 import Styles from "../../Styles/mainStyles";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const Calculator = () => {
   const [idNumber, setIdNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [studentData, setStudentData] = useState(null);
   const [loginAttempted, setLoginAttempted] = useState(false);
   const navigation = useNavigation();
@@ -50,7 +51,7 @@ const Calculator = () => {
     console.log("Login button pressed");
     setLoginAttempted(true);
 
-    if (studentData && idNumber === password) {
+    if (studentData && studentData.password === password) {
       Alert.alert("Success", "Login Successfully");
       navigation.navigate('History', { studentData });
       setLoginAttempted(false);
@@ -74,7 +75,7 @@ const Calculator = () => {
           <Text style={Styles.inputLabel}>ID Number</Text>
           <View style={[
             Styles.inputWrapper,
-            loginAttempted && (!studentData || idNumber !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
+            loginAttempted && (!studentData || studentData.password !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
           ]}>
             <TextInput
               style={Styles.input}
@@ -96,16 +97,19 @@ const Calculator = () => {
           <Text style={Styles.inputLabel}>Password</Text>
           <View style={[
             Styles.inputWrapper,
-            loginAttempted && (!studentData || idNumber !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
+            loginAttempted && (!studentData || studentData.password !== password) ? { borderColor: 'red', borderWidth: 4, borderRadius: 10 } : {}
           ]}>
             <TextInput
               style={Styles.input}
-              secureTextEntry
+              secureTextEntry={!passwordVisible}
               value={password}
               onChangeText={setPassword}
               placeholder="Enter your password"
               placeholderTextColor="white"
             />
+            <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)} style={Styles.showHideButton}>
+              <Icon name={passwordVisible ? "visibility-off" : "visibility"} size={20} color="white" />
+            </TouchableOpacity>
             {password !== '' && (
               <TouchableOpacity onPress={() => setPassword('')} style={Styles.clearButton}>
                 <Icon name="clear" size={20} color="white" />
