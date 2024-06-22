@@ -37,7 +37,22 @@ const History = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-
+      <View>
+          <Text style={{ backgroundColor: '#ffffff', fontSize: 20, paddingVertical: 20, paddingHorizontal: 20, borderRadius: 20, color: 'black', textAlign: 'center' }}>
+              <Text style={{fontWeight: 'bold', fontSize: 25}}>Developers</Text>
+              {'\n'}
+              <Text>Catindig, Ronan Reil S.</Text>
+              {'\n'}
+              <Text>Pabillore, Justin P.</Text>
+              {'\n'}
+              <Text>Salas, Nhed Ardy B.</Text>
+              {'\n'}
+              <Text>Saburnido, Nov Flowyn S.</Text>
+              {'\n'}
+              {'\n'}
+              <Text style={{fontStyle:'italic'}}>BSIT 3R4</Text>
+          </Text>
+          </View>
       <View style={{ backgroundColor: '#0b1933', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingVertical: 20 }}>
         <TouchableOpacity onPress={handleLogout}>
           <Text style={{ backgroundColor: '#fcb414', paddingVertical: 15, paddingHorizontal: 50, borderRadius: 20, color: 'white' }}>Logout</Text>
